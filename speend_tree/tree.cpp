@@ -73,3 +73,41 @@ void Tree::CalculatePathes()
 		}
 	}
 }
+
+
+
+void Tree::PrintPathes()
+{
+	for (int i = 0; i < pathes.size(); i++)
+	{
+		cout << pathes[i]->GetA() << " - " << pathes[i]->GetB() << " = " << pathes[i]->GetPath() << endl;
+	}
+}
+
+
+void Tree::CalculateMinTree()
+{
+	sort(pathes.begin(), pathes.end(), PathComparator);
+	minTree.push_back(pathes[0]);
+	GetPoint(pathes[0]->GetA())->SetUse(true);
+	GetPoint(pathes[0]->GetB())->SetUse(true);
+	for (int i = 1; i < pathes.size(); i++)
+	{
+		if (!GetPoint(pathes[i]->GetA())->GetUse() || !GetPoint(pathes[i]->GetB())->GetUse())
+		{
+			GetPoint(pathes[i]->GetA())->SetUse(true);
+			GetPoint(pathes[i]->GetB())->SetUse(true);
+			minTree.push_back(pathes[i]);
+		}
+
+	}
+}
+
+void Tree::PrintMinTree()
+{
+	sort(minTree.begin(), minTree.end(), IdComparator);
+	for (int i = 0; i < minTree.size(); i++)
+	{
+		cout << minTree[i]->GetA() << " - " << minTree[i]->GetB() << " = " << minTree[i]->GetPath() << endl;
+	}
+}

@@ -1,6 +1,6 @@
-##pragma once
+#pragma once
 #include <vector>
-#include "Point.h"
+#include "point.h"
 #include "path.h"
 
 class Tree

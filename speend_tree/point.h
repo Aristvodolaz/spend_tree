@@ -20,3 +20,4 @@ public:
 
 	int CalculatePathToPoint(Point* p);
 };
+
